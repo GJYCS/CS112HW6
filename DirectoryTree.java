@@ -1,4 +1,7 @@
 package hw6;
+
+import java.util.LinkedList;
+
 /*
  * Your First Name: Matthew Your Last Name: Gagnon Your BU username: mgnon
  * 
@@ -17,7 +20,21 @@ public class DirectoryTree {
 	// in order to get the behavior described on the pset
 	// You will want to maintain two private members:
 	// the root and the current directory.
+	
+	private Node root;
+	public class Node {
+		private Node parent;
+		private LinkedList<Node> children;
+		public Node(Node p) {
+			parent = p;
+			
+		}
+		
+	}
+	
+	
 	public boolean mkdir (String name) {
+		
 		return false;
 	}
 	

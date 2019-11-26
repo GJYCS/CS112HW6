@@ -106,13 +106,13 @@ public class BSTWithDuplicates<T extends Comparable<T>> {
 	 */
 	public ArrayList<T> getAllEntriesEqualTo(T entry) // *
 	{
-		if (root == null)
-			return null;
+		
 		ArrayList<T> list = new ArrayList<>();
-		return _getAllEntries(root, entry, list);
+		_getAllEntries(root, entry, list);
+		return list;
 	}
 
-	private ArrayList<T> _getAllEntries(BinaryNode a, T entry, ArrayList list) {
+	private void _getAllEntries(BinaryNode a, T entry, ArrayList list) {
 
 		if (a != null) {
 			if (a.data == entry)
@@ -122,7 +122,7 @@ public class BSTWithDuplicates<T extends Comparable<T>> {
 			_getAllEntries(a.right, entry, list);
 
 		}
-		return list;
+		
 
 	}
 
@@ -163,7 +163,7 @@ public class BSTWithDuplicates<T extends Comparable<T>> {
 			return current;
 		else if(current.data.compareTo(currentParent.data) > 0) {
 			currentParent.right = _add(currentParent.right, current);
-		}else if(current.data.compareTo(currentParent.data) < 0 ) {
+		}else if(current.data.compareTo(currentParent.data) <= 0 ) {
 			currentParent.left = _add(currentParent.left, current);
 		}
 		return currentParent;

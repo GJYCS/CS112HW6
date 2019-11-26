@@ -25,14 +25,24 @@ public class OrderedList <T extends Comparable<T>>{
 	 */
 	public void insert (T v) {
 		// TODO: Implement
-		Node prev = head, current = head.next;
-		while(current != null) {
-			int currentResult = current.value.compareTo(v);
-			int prevResult = prev.value.compareTo(v);
-			if(prevResult < 0) {
-				prev.next = new Node(v, prev.next);
-			}
-		}
+	  
+	  if(head.next == null) {
+	    head.next = new Node(v, null);
+	  }else {
+	  
+    	  Node previous = head, current = head.next;
+    
+    	  while(current != null) {
+    	    int result = v.compareTo(current.value);
+    	    if(result == 0 || result < 0) {
+    	      previous.next = new Node(v, current);
+    	      break;
+    	      
+    	    }
+    	 }
+	  
+	  }
+	  
 	}
 	
 	/*
@@ -84,7 +94,29 @@ public class OrderedList <T extends Comparable<T>>{
 	 */
 	OrderedList<T> merge (OrderedList<T> that) {
 		// TODO: Implement
-		return null; // Just a placeholder--remove
+	 if(that.head == null)
+	   return this;
+	 else if(this.head == null)
+	   return that;
+	 
+	 OrderedList<T> newList = new OrderedList<>();
+	 Node thisTemp = this.head;
+	 Node thatTemp = that.head;
+	 Node newListTemp = newList.head;
+	 
+	 
+	 while(thisTemp != null && thatTemp != null) {
+	   int compare = thisTemp.value.compareTo(thatTemp.value);
+	   if(compare < 0) {
+	     newListTemp = new Node(thisTemp.value, null);
+	     thisTemp = thisTemp.next;
+	   } else {
+	     newListTemp = new Node(thatTemp.value, null);
+	     thatTemp = thatTemp.next;
+	   }
+	   newListTemp = newListTemp.next;
+	 }
+	 return newList;
 	}
 	
     /* Same output format as java.util.Arrays.toString

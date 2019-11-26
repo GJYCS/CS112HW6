@@ -36,6 +36,7 @@ public class BSTWithDuplicatesDriver
 		myBST.add(luke);
 
 
+		
 		System.out.println("\nTest getEntry:\n");
 		System.out.println("Brent: " + myBST.getEntry(brent));
 		System.out.println("Donna: " + myBST.getEntry(donna));
